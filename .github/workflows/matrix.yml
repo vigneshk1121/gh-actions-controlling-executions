@@ -8,6 +8,12 @@ jobs:
             # eg: build app on different envts or testing in different OS
                 node-version: [12, 14, 16]
                 operating-system: [ubuntu-latest, windows-latest]
+                include: # allows to add standalone combinations even add new combinations
+                    - node-version: 18
+                      operating-system: ubuntu-latest
+                exclude: # excule a particluar combination
+                    - node-version: 12
+                      operating-system: windows-latest
         runs-on: ${{matrix.operating-system}}
         steps:
             - name: Get Code
